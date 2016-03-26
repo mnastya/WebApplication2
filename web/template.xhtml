@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title><ui:insert name="windowTitle"/></title>
+        <h:outputStylesheet library="css" name="styles.css"/>	    
+        <link rel="shortcut icon" type="image/x-icon" href="#{resource['img/Kuka.png']}"/>
+    </h:head>
+    <h:body>  
+        <ui:decorate template="./toolbar.xhtml">
+            <ui:insert name="heading"/>       
+        </ui:decorate> 
+
+        <div id="menuAndContent"> 
+            <div id="menuLeft"> 
+                <ui:insert name="menuLeft"/>
+            </div>    
+            <div id="content">
+                <ui:insert name="content"/>
+            </div> 
+        </div>  
+    </h:body>
+</html> 
