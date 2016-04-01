@@ -16,13 +16,13 @@ import ru.htf.datatypes.Airport;
  *
  * @author chudin_e_v
  */
-@ManagedBean(name = "airportService", eager = true)
-@ApplicationScoped
+//@ManagedBean(name = "airportService", eager = true)
+//@ApplicationScoped
 public class AirportService {
 
     List airports;
 
-    @PostConstruct
+  //  @PostConstruct
     public void init() {
         airports = new ArrayList<Airport>();
         airports.add(new Airport("Pulkovo", "LED1", "RUS", "St.Petersburg", 1));
