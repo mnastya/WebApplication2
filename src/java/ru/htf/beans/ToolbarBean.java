@@ -29,26 +29,29 @@ public class ToolbarBean {
     private Integer airportTo;
     private Date dateFrom;
     private Date dateBack;
-    private Date maxDate;
 
-    @ManagedProperty("#{airportService}")
+    //@ManagedProperty("#{airportService}")
     private AirportService aService;
     
     @PostConstruct
     void init() {
         FacesContext.getCurrentInstance().getExternalContext().getSession(true);
-        aService.init();
+  //      aService.init();
     }
 
     public void preRenderedViewListener() {
     }
 
     public final void fetchAirportList() {
-        airports = aService.getAirports();
+        airports = new ArrayList<Airport>();
+        airports.add(new Airport("Pulkovo", "LED1", "RUS", "St.Petersburg", 1));
+        airports.add(new Airport("Pulkovo", "LED2", "RUS", "St.Petersburg[2]", 2));
+//        airports = aService.getAirports();
     }
 
     public ToolbarBean() {
         //ExternalContext ctx = FacesContext.getCurrentInstance().getExternalContext();
+        
         fetchAirportList();
     }
 

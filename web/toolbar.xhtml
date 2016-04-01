@@ -39,6 +39,7 @@
                         <h:outputText value="at.city" />
                     </p:selectOneMenu>
                     <p:graphicImage name="/img/PlaneDown.png" />
+
                 </h:form>
                 <h:form>
                     <!--h:outputLabel value="Туда " /-->
@@ -46,6 +47,9 @@
                     <!--h:outputLabel value="Обратно "/-->
                     <p:calendar id="dateBack" value="#{toolbarBean.dateBack}" size="10" mindate="#{toolbarBean.minBackDate}"  navigator="true" pattern="dd MMM, D"/>
                 </h:form>
+                <p:commandLink actionListener="#{toolbarBean.find}">
+                    <h:graphicImage url="#{resource['img:Search.png']}" style="display: block; margin: 6px auto"/>
+                </p:commandLink>
                 <!--p:autoComplete id="advanced" queryDelay="1000" value="{toolbarBean.airportFrom}" 
                                                    completeMethod="{toolbarBean.completePort}"
                                                    var="portFrom" itemLabel="{portFrom.name}" itemValue="{portFrom}">

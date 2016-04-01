@@ -19,7 +19,7 @@ import ru.htf.service.AirportService;
  *
  * @author chudin_e_v
  */
-@FacesConverter("airportConverter")
+//@FacesConverter("airportConverter")
 public class AirportConverter implements Converter {
 
     public Object getAsObject(FacesContext fc, UIComponent uic, String value) {
