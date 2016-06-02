@@ -13,6 +13,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.context.PartialViewContext;
+import org.hibernate.Session;
 import ru.htf.hibernate.*;
 import ru.htf.hibernate.managers.ConnectionManager;
 
@@ -51,24 +52,12 @@ public class ToolbarBean {
     }
 
     public void find() {
+        
     }
 
     public void changePorts() {
+       
     }
-/*
-    public List<Airport> completePort(String query) {
-        List<Airport> filteredPorts = new ArrayList<Airport>();
-
-        for (Airport port : airports) {
-            if (port.getCity().toLowerCase().startsWith(query)
-                    || port.getName().toLowerCase().startsWith(query)
-                    || port.getShortName().toLowerCase().startsWith(query)) {
-                filteredPorts.add(port);
-            }
-        }
-        return filteredPorts;
-    }
-*/
 
     public List<Cities> getCities() {
         return cities;
@@ -90,6 +79,22 @@ public class ToolbarBean {
         return dateFrom;
     }
 
+    public Integer getCityFrom() {
+        return cityFrom;
+    }
+
+    public Integer getCityTo() {
+        return cityTo;
+    }   
+
+    public void setCityFrom(Integer cityFrom) {
+        this.cityFrom = cityFrom;
+    }
+
+    public void setCityTo(Integer cityTo) {
+        this.cityTo = cityTo;
+    }
+    
     public Date getMinBackDate() {
         return dateFrom == null ? new Date() : dateFrom;
     }

@@ -18,25 +18,24 @@
                     <p:graphicImage name="/img/Kuka.png"/>
                 </h:form>
                 <br/>
-                <h:form id="airports">
+                <h:form id="cities">
                     <p:graphicImage name="/img/PlaneUp.png"/>
-                    <p:selectOneMenu id="arpFrom" value="#{toolbarBean.airportFrom}" panelStyle="width:180px" 
-                                     effect="fade" style="width:260px; font-size: 1.0em" filter="true" filterMatchMode="contains">
+                    <p:selectOneMenu id="cityFrom" value="#{toolbarBean.cityFrom}" panelStyle="width:180px" 
+                                     effect="fade" style="width:260px; font-size: 1.0em">
                         <!--h:outputText value="af.city" /-->
                         <f:selectItem id="defaultFrom" itemLabel="Город вылета:" />
-                        <f:selectItems value="#{toolbarBean.airports}" var="port" itemLabel="#{port.city}" itemValue="#{port.arpId}" />
+                        <f:selectItems value="#{toolbarBean.cities}" var="cityF" itemLabel="#{cityF.cityName}" itemValue="#{cityF.cityId}" />
                     </p:selectOneMenu>
 
                     <h:commandLink styleClass="ui-icon ui-icon-transferthick-e-w" actionListener="#{toolbarBean.changePorts}"
                                    style="display: inline-block; margin-right: 5px">
-                        <p:ajax update=":airports"/>
+                        <p:ajax update=":cities"/>
                     </h:commandLink>
 
-                    <p:selectOneMenu id="arpTo" value="#{toolbarBean.airportTo}" panelStyle="width:180px" var="at"
-                                     effect="fade" style="width:260px; font-size: 1.0em" filter="true" filterMatchMode="contains">
-                        <!--f:selectItem id="defaultTo" itemLabel="Город прибытия:"/-->
-                        <f:selectItems value="#{toolbarBean.airports}" var="port" itemLabel="#{port.city}" itemValue="#{port.arpId}" />
-                        <h:outputText value="at.city" />
+                    <p:selectOneMenu id="cityTo" value="#{toolbarBean.cityTo}" panelStyle="width:180px"
+                                     effect="fade" style="width:260px; font-size: 1.0em">
+                        <f:selectItem id="defaultTo" itemLabel="Город прибытия:"/>
+                        <f:selectItems value="#{toolbarBean.cities}" var="city" itemLabel="#{city.cityName}" itemValue="#{city.cityId}" />
                     </p:selectOneMenu>
                     <p:graphicImage name="/img/PlaneDown.png" />
 
@@ -47,9 +46,13 @@
                     <!--h:outputLabel value="Обратно "/-->
                     <p:calendar id="dateBack" value="#{toolbarBean.dateBack}" size="10" mindate="#{toolbarBean.minBackDate}"  navigator="true" pattern="dd MMM, D"/>
                 </h:form>
-                <p:commandLink actionListener="#{toolbarBean.find}">
+                <h:link outcome="search.xhtml">
                     <h:graphicImage url="#{resource['img:Search.png']}" style="display: block; margin: 6px auto"/>
-                </p:commandLink>
+                    <f:param name="cityFrom" value="#{toolbarBean.cityFrom}"/>
+                    <f:param name="cityTo" value="#{toolbarBean.cityTo}"/>
+                    <f:param name="dateFrom" value="#{toolbarBean.dateFrom}"/>
+                    <f:param name="dateBack" value="#{toolbarBean.dateBack}"/>
+                </h:link>
                 <!--p:autoComplete id="advanced" queryDelay="1000" value="{toolbarBean.airportFrom}" 
                                                    completeMethod="{toolbarBean.completePort}"
                                                    var="portFrom" itemLabel="{portFrom.name}" itemValue="{portFrom}">

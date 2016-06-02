@@ -18,10 +18,14 @@ import ru.htf.hibernate.Trips;
  * @author ЕвГений
  */
 public class ConnectionManager {
-    Session session = null;
+    private Session session = null;
 
     public ConnectionManager() {
         this.session = HibernateUtil.getSessionFactory().getCurrentSession();
+    }
+
+    public Session getSession() {
+        return session;
     }
     
     public List getAirportByCities(String city){

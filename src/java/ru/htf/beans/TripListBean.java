@@ -13,11 +13,14 @@ import javax.faces.bean.RequestScoped;
  */
 @ManagedBean
 @RequestScoped
-public class NewJSFManagedBean {
+public class TripListBean {
 
     /**
-     * Creates a new instance of NewJSFManagedBean
+     * Creates a new instance of TripListBean
      */
-    public NewJSFManagedBean() {
+    public TripListBean() {
+    }
+    
+    public void preRenderedViewListener() {
     }
 }
