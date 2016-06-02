@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 27.05.2016 5:56:23 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="ru.htf.hibernate.Orderstrip" table="orderstrip" catalog="htf">
+        <id name="ticketId" type="int">
+            <column name="TicketID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="trips" class="ru.htf.hibernate.Trips" fetch="select">
+            <column name="TripID" />
+        </many-to-one>
+        <many-to-one name="orderstatus" class="ru.htf.hibernate.Orderstatus" fetch="select">
+            <column name="OrderStatusID" />
+        </many-to-one>
+        <many-to-one name="users" class="ru.htf.hibernate.Users" fetch="select">
+            <column name="UserID" />
+        </many-to-one>
+        <property name="purchaseDate" type="date">
+            <column name="PurchaseDate" length="10" />
+        </property>
+        <set name="optionfororders" inverse="true">
+            <key>
+                <column name="TicketID" />
+            </key>
+            <one-to-many class="ru.htf.hibernate.Optionfororder" />
+        </set>
+    </class>
+</hibernate-mapping>

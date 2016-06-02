@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="htf"/>
+  <table-filter match-name="orderstatus"/>
+  <table-filter match-name="cities"/>
+  <table-filter match-name="parameters"/>
+  <table-filter match-name="airports"/>
+  <table-filter match-name="optionfororder"/>
+  <table-filter match-name="orderstrip"/>
+  <table-filter match-name="users"/>
+  <table-filter match-name="portfortripid"/>
+  <table-filter match-name="trips"/>
+  <table-filter match-name="airplanetypes"/>
+  <table-filter match-name="roles"/>
+  <table-filter match-name="optionfortrip"/>
+  <table-filter match-name="countries"/>
+</hibernate-reverse-engineering>

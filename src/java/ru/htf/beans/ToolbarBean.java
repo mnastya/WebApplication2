@@ -13,8 +13,9 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.context.PartialViewContext;
-import ru.htf.datatypes.Airport;
-import ru.htf.service.AirportService;
+import ru.htf.hibernate.*;
+import ru.htf.hibernate.managers.ConnectionManager;
+
 
 /**
  *
@@ -24,14 +25,12 @@ import ru.htf.service.AirportService;
 @ViewScoped
 public class ToolbarBean {
 
-    private List<Airport> airports = new ArrayList<Airport>();
-    private Integer airportFrom;
-    private Integer airportTo;
+    private List<Cities> cities = new ArrayList<Cities>();
+    private Integer cityFrom;
+    private Integer cityTo;
     private Date dateFrom;
     private Date dateBack;
-
-    //@ManagedProperty("#{airportService}")
-    private AirportService aService;
+    ConnectionManager cm = new ConnectionManager();
     
     @PostConstruct
     void init() {
@@ -43,15 +42,11 @@ public class ToolbarBean {
     }
 
     public final void fetchAirportList() {
-        airports = new ArrayList<Airport>();
-        airports.add(new Airport("Pulkovo", "LED1", "RUS", "St.Petersburg", 1));
-        airports.add(new Airport("Pulkovo", "LED2", "RUS", "St.Petersburg[2]", 2));
-//        airports = aService.getAirports();
+        cities = cm.getCities();
     }
 
     public ToolbarBean() {
         //ExternalContext ctx = FacesContext.getCurrentInstance().getExternalContext();
-        
         fetchAirportList();
     }
 
@@ -60,7 +55,7 @@ public class ToolbarBean {
 
     public void changePorts() {
     }
-
+/*
     public List<Airport> completePort(String query) {
         List<Airport> filteredPorts = new ArrayList<Airport>();
 
@@ -73,32 +68,13 @@ public class ToolbarBean {
         }
         return filteredPorts;
     }
+*/
 
-    public List<Airport> getAirports() {
-        return airports;
+    public List<Cities> getCities() {
+        return cities;
     }
 
-    public Integer getAirportFrom() {
-        return airportFrom;
-    }
-
-    public void setaService(AirportService aService) {
-        this.aService = aService;
-    }
-    
-    public void setAirportFrom(Integer airport) {
-        this.airportFrom = airport;
-    }
-
-    public Integer getAirportTo() {
-        return airportTo;
-    }
-
-    public void setAirportTo(Integer airport) {
-        this.airportTo = airport;
-    }
-
-    public void setDateBack(Date dateBack) {
+  public void setDateBack(Date dateBack) {
         this.dateBack = dateBack;
     }
 

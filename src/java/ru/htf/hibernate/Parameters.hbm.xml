@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 27.05.2016 5:56:23 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="ru.htf.hibernate.Parameters" table="parameters" catalog="htf">
+        <id name="optionId" type="int">
+            <column name="OptionID" />
+            <generator class="assigned" />
+        </id>
+        <property name="optionName" type="string">
+            <column name="OptionName" length="65535" />
+        </property>
+        <property name="optionPrice" type="java.lang.Integer">
+            <column name="OptionPrice" />
+        </property>
+        <set name="optionfortrips" inverse="true">
+            <key>
+                <column name="OptionID" />
+            </key>
+            <one-to-many class="ru.htf.hibernate.Optionfortrip" />
+        </set>
+        <set name="optionfororders" inverse="true">
+            <key>
+                <column name="OptionID" />
+            </key>
+            <one-to-many class="ru.htf.hibernate.Optionfororder" />
+        </set>
+    </class>
+</hibernate-mapping>

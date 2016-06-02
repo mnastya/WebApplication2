@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 27.05.2016 5:56:23 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="ru.htf.hibernate.Users" table="users" catalog="htf">
+        <id name="userId" type="int">
+            <column name="UserID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="roles" class="ru.htf.hibernate.Roles" fetch="select">
+            <column name="RoleID" />
+        </many-to-one>
+        <property name="nameU" type="string">
+            <column name="NameU" length="65535" />
+        </property>
+        <property name="surname" type="string">
+            <column name="Surname" length="65535" />
+        </property>
+        <property name="middleName" type="string">
+            <column name="MiddleName" length="65535" />
+        </property>
+        <property name="passportNumber" type="java.lang.Integer">
+            <column name="PassportNumber" />
+        </property>
+        <property name="login" type="string">
+            <column name="Login" length="65535" />
+        </property>
+        <property name="passwordU" type="string">
+            <column name="PasswordU" length="65535" />
+        </property>
+        <set name="orderstrips" inverse="true">
+            <key>
+                <column name="UserID" />
+            </key>
+            <one-to-many class="ru.htf.hibernate.Orderstrip" />
+        </set>
+    </class>
+</hibernate-mapping>

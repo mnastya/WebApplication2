@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 27.05.2016 5:56:23 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="ru.htf.hibernate.Portfortripid" table="portfortripid" catalog="htf">
+        <id name="portForTripId" type="int">
+            <column name="PortForTripID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="trips" class="ru.htf.hibernate.Trips" fetch="select">
+            <column name="TripID" />
+        </many-to-one>
+        <many-to-one name="airports" class="ru.htf.hibernate.Airports" fetch="select">
+            <column name="AirportID" />
+        </many-to-one>
+        <property name="airportType" type="string">
+            <column name="AirportType" length="65535" />
+        </property>
+    </class>
+</hibernate-mapping>

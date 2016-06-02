@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 27.05.2016 5:56:23 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="ru.htf.hibernate.Airplanetypes" table="airplanetypes" catalog="htf">
+        <id name="typeId" type="int">
+            <column name="TypeID" />
+            <generator class="assigned" />
+        </id>
+        <property name="typeName" type="string">
+            <column name="TypeName" length="65535" />
+        </property>
+        <property name="countPlaces" type="java.lang.Integer">
+            <column name="CountPlaces" />
+        </property>
+        <set name="tripses" inverse="true">
+            <key>
+                <column name="AirplaneTypeID" />
+            </key>
+            <one-to-many class="ru.htf.hibernate.Trips" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 27.05.2016 5:56:23 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="ru.htf.hibernate.Cities" table="cities" catalog="htf">
+        <id name="cityId" type="int">
+            <column name="CityID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="countries" class="ru.htf.hibernate.Countries" fetch="select">
+            <column name="CountryID" />
+        </many-to-one>
+        <property name="cityName" type="string">
+            <column name="CityName" length="65535" />
+        </property>
+        <set name="airportses" inverse="true">
+            <key>
+                <column name="CityID" />
+            </key>
+            <one-to-many class="ru.htf.hibernate.Airports" />
+        </set>
+    </class>
+</hibernate-mapping>

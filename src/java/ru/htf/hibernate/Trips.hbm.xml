@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 27.05.2016 5:56:23 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="ru.htf.hibernate.Trips" table="trips" catalog="htf">
+        <id name="tripId" type="int">
+            <column name="TripID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="airplanetypes" class="ru.htf.hibernate.Airplanetypes" fetch="select">
+            <column name="AirplaneTypeID" />
+        </many-to-one>
+        <property name="dateTrip" type="date">
+            <column name="DateTrip" length="10" />
+        </property>
+        <property name="timeTrip" type="time">
+            <column name="TimeTrip" length="8" />
+        </property>
+        <property name="startingPricce" type="java.lang.Integer">
+            <column name="StartingPricce" />
+        </property>
+        <set name="optionfortrips" inverse="true">
+            <key>
+                <column name="TripID" />
+            </key>
+            <one-to-many class="ru.htf.hibernate.Optionfortrip" />
+        </set>
+        <set name="portfortripids" inverse="true">
+            <key>
+                <column name="TripID" />
+            </key>
+            <one-to-many class="ru.htf.hibernate.Portfortripid" />
+        </set>
+        <set name="orderstrips" inverse="true">
+            <key>
+                <column name="TripID" />
+            </key>
+            <one-to-many class="ru.htf.hibernate.Orderstrip" />
+        </set>
+    </class>
+</hibernate-mapping>
