@@ -9,20 +9,20 @@
         <title>Facelet Title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
-    <h:body style="background: #{resource['img/sky.jpg']}">
+    <h:body>
         <ui:composition >
             <f:event type="preRenderView" listener="#{toolbarBean.preRenderedViewListener}"/>
-            <h:panelGroup id="heading" layout="block" style="background-image: #{resource['img/sky.png']}">
+            <h:panelGroup id="heading" layout="block">
                 <h:form>
-                    <h1>Happy Airlines</h1>
-                    <p:graphicImage name="/img/Kuka.png"/>
+                    <h:link outcome="index.xhtml">
+                        <h:graphicImage url="#{resource['img:ha_logo.png']}"/>
+                    </h:link>
                 </h:form>
                 <br/>
                 <h:form id="cities">
                     <p:graphicImage name="/img/PlaneUp.png"/>
                     <p:selectOneMenu id="cityFrom" value="#{toolbarBean.cityFrom}" panelStyle="width:180px" 
                                      effect="fade" style="width:260px; font-size: 1.0em">
-                        <!--h:outputText value="af.city" /-->
                         <f:selectItem id="defaultFrom" itemLabel="Город вылета:" />
                         <f:selectItems value="#{toolbarBean.cities}" var="cityF" itemLabel="#{cityF.cityName}" itemValue="#{cityF.cityId}" />
                     </p:selectOneMenu>
@@ -42,9 +42,9 @@
                 </h:form>
                 <h:form>
                     <!--h:outputLabel value="Туда " /-->
-                    <p:calendar id="dateFrom" value="#{toolbarBean.dateFrom}" size="10" navigator="true" mindate="0"  immediate="true" pattern="dd MMM, D"/>
+                    <p:calendar id="dateFrom" value="#{toolbarBean.dateFrom}" size="14" navigator="true" mindate="0"  immediate="true" pattern="D, dd MMM yyyy"/>
                     <!--h:outputLabel value="Обратно "/-->
-                    <p:calendar id="dateBack" value="#{toolbarBean.dateBack}" size="10" mindate="#{toolbarBean.minBackDate}"  navigator="true" pattern="dd MMM, D"/>
+                    <p:calendar id="dateBack" value="#{toolbarBean.dateBack}" size="14" mindate="0"  navigator="true" pattern="D, dd MMM yyyy"/>
                 </h:form>
                 <h:link outcome="search.xhtml">
                     <h:graphicImage url="#{resource['img:Search.png']}" style="display: block; margin: 6px auto"/>
@@ -53,12 +53,6 @@
                     <f:param name="dateFrom" value="#{toolbarBean.dateFrom}"/>
                     <f:param name="dateBack" value="#{toolbarBean.dateBack}"/>
                 </h:link>
-                <!--p:autoComplete id="advanced" queryDelay="1000" value="{toolbarBean.airportFrom}" 
-                                                   completeMethod="{toolbarBean.completePort}"
-                                                   var="portFrom" itemLabel="{portFrom.name}" itemValue="{portFrom}">
-                                       <h:outputText/>
-                                       <h2>{portFrom.}</h2>
-                                   </p:autoComplete-->
             </h:panelGroup>
         </ui:composition>    
     </h:body>

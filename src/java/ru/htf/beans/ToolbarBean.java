@@ -31,6 +31,7 @@ public class ToolbarBean {
     private Integer cityTo;
     private Date dateFrom;
     private Date dateBack;
+    private char search  ='F';
     ConnectionManager cm = new ConnectionManager();
     
     @PostConstruct
@@ -39,6 +40,10 @@ public class ToolbarBean {
   //      aService.init();
     }
 
+    public char getSearch() {
+        return search;
+    }
+    
     public void preRenderedViewListener() {
     }
 
@@ -52,10 +57,13 @@ public class ToolbarBean {
     }
 
     public void find() {
-        
+        this.search = 'T';
     }
 
     public void changePorts() {
+        Integer from = this.cityFrom; 
+        this.cityFrom = this.cityTo;
+        this.cityTo = from;
        
     }
 
