@@ -12,16 +12,16 @@
 
     <h:body>
         <ui:composition template="./template.xhtml">
-           
+
 
             <ui:define name="menuLeft">
-                <!--ui:include src="./word.xhtml"/-->
+
             </ui:define>
 
             <ui:define name="content">
-                <!--ui:include rendered="{toolbarBean.search eq 'T'}" src="./triplist.xhtml"/-->
+                <ui:include src="./word.xhtml"/>                <!--ui:include rendered="{toolbarBean.search eq 'T'}" src="./triplist.xhtml"/-->
             </ui:define>
-            
+
         </ui:composition>    
     </h:body>
 </html>

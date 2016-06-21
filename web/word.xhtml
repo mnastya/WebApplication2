@@ -11,13 +11,12 @@
 
     <h:body>        
         <ui:composition>
-            <div style="font-style: italic; font-family: Palatino; margin-bottom: 15px;margin-left: 5%;"> 
-                <div style="text-align: center; width=100%;margin-bottom: 12px;margin-top: 12px;font-size:1.15em;">
-                </div>    
-                <h:form prependId="false">
-                    <h:commandLink  action="index.xhtml" value="word" style="font-family:Palatino;font-style:italic"/>
-                </h:form>
-            </div>
+            <h:form prependId="false">
+                <!--h:commandLink  action="index.xhtml" value="word" style="font-family:Palatino;font-style:italic"/-->
+                <h:commandLink styleClass="ui-icon ui-icon-transferthick-e-w" actionListener="#{toolbarBean.syncOut}"
+                                   style="display: inline-block; margin-right: 5px">
+                    </h:commandLink>
+            </h:form>
         </ui:composition>
     </h:body>
 </html> 

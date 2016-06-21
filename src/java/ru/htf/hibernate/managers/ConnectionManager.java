@@ -8,10 +8,13 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
 import ru.htf.hibernate.Airports;
 import ru.htf.hibernate.Cities;
 import ru.htf.hibernate.HibernateUtil;
+import ru.htf.hibernate.Orderstrip;
 import ru.htf.hibernate.Trips;
+import sun.security.krb5.internal.Ticket;
 
 /**
  *
@@ -63,4 +66,16 @@ public class ConnectionManager {
         }
         return tripsList;
     }
+     
+     public List getOrdersById(int id){
+         List<Orderstrip> orderList = null;
+         try {
+            Transaction tx = session.beginTransaction();
+            Query q = session.createQuery("from Orderstrip where TicketID > " + id);
+            orderList = (List<Orderstrip>)q.list();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+         return orderList;
+     }
 }

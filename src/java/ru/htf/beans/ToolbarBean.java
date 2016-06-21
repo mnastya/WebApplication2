@@ -1,5 +1,6 @@
 package ru.htf.beans;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -16,6 +17,7 @@ import javax.faces.context.PartialViewContext;
 import org.hibernate.Session;
 import ru.htf.hibernate.*;
 import ru.htf.hibernate.managers.ConnectionManager;
+import ru.htf.hibernate.managers.StorageManager;
 
 
 /**
@@ -91,6 +93,15 @@ public class ToolbarBean {
         return cityFrom;
     }
 
+    public void syncOut() throws SQLException{
+        try{
+        StorageManager sm = new StorageManager();
+        sm.syncOutOrders();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    
     public Integer getCityTo() {
         return cityTo;
     }   
